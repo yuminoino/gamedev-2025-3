@@ -24,16 +24,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
 
-
-
-            void OnCollisionEnter(Collision collision)
-            {
-                if (collision.gameObject.CompareTag("Obstacle"))
-                {
-                    Debug.Log("Hai colpito un ostacolo!");
-                }
-            }
-
         }
     }
 
