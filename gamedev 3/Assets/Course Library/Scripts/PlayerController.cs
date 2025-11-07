@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    public float jumpForce = 10.0f;
+    private float jumpForce = 11.0f;
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver = false;
