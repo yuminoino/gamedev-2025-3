@@ -9,7 +9,7 @@ public class MoveLeft : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+       playerControllerScript = GameObject.Find("Gino").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
