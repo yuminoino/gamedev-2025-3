@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = true;
     public bool gameOver = false;
     private Animator playerAim;
+    public int score = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,11 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             playerAim.SetTrigger("Jump_trig");
-           
+
+            // Aumenta il punteggio ad ogni salto
+            score ++;
+            Debug.Log("Score: " + score);
+
         }
         else if (gameOver)
         {
