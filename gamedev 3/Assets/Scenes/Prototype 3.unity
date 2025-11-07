@@ -319,7 +319,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 20847b8e912bc604b99e748a676d067b, type: 3}
       propertyPath: m_Name
-      value: PlayerController
+      value: Gino
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20847b8e912bc604b99e748a676d067b, type: 3}
       propertyPath: m_LocalPosition.x
