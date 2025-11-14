@@ -4,13 +4,18 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private float jumpForce = 11.0f;
+    private Animator playerAim;
+    public AudioSource playerAudio;
+
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver = false;
-    private Animator playerAim;
     public int score = 0;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
+    public AudioClip jumpSound;
+    public AudioClip crashSound;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,7 +23,8 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
-       
+        playerAudio = GetComponent<AudioSource>();
+
 
     }
 
@@ -30,6 +36,7 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             playerAim.SetTrigger("Jump_trig");
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
 
             // Aumenta il punteggio ad ogni salto
             score ++;
@@ -57,6 +64,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Game Over!");
             explosionParticle.Play();
             dirtParticle.Stop();
+            playerAudio.PlayOneShot(crashSound, 1.0f);
         }
    }
 }
