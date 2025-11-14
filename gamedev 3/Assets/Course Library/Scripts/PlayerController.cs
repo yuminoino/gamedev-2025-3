@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public bool gameOver = false;
     private Animator playerAim;
     public int score = 0;
+    public ParticleSystem explosionParticle;
+    public ParticleSystem dirtParticle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
+       
 
     }
 
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
             // Aumenta il punteggio ad ogni salto
             score ++;
             Debug.Log("Score: " + score);
+            dirtParticle.Stop();
 
         }
         else if (gameOver)
@@ -45,12 +49,15 @@ public class PlayerController : MonoBehaviour
         { 
         
         if (collision.gameObject.CompareTag("Ground")) {
-            isOnGround = true;
+            isOnGround = true; 
+            dirtParticle.Play();
         } else if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameOver = true;
         Debug.Log("Game Over!");
-    }
+            explosionParticle.Play();
+            dirtParticle.Stop();
+        }
    }
 }
 
