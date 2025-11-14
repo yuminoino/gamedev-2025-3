@@ -4,6 +4,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public GameObject gameOver;
     public PlayerController Gino;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,5 +17,10 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + Gino.score;
+        if (Gino.gameOver)
+        {
+            gameOver.SetActive(true);
+            Destroy(this);
+        }
     }
 }
